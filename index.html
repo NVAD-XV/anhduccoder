@@ -1,0 +1,324 @@
+    <!DOCTYPE html>
+<html lang="en">
+<script language="JavaScript">
+    var msg = "🦄  Bấm Chuột Phải Làm Gì ? Ko Copy Source Được Đâu ☔";
+
+function disableIE() {
+        if(document.all) return alert(msg), !1
+}
+
+function disableNS(e) {
+        if((document.layers || document.getElementById && !document.all) && (2 == e.which || 3 == e.which)) return alert(msg), !1
+}
+document.layers ? (document.captureEvents(Event.MOUSEDOWN), document.onmousedown = disableNS) : (document.onmouseup = disableNS, document.oncontextmenu = disableIE), document.oncontextmenu = new Function("alert(msg);return false"), shortcut = {
+        all_shortcuts: {},
+        add: function(m, g, w) {
+                var e = {
+                        type: "keydown",
+                        propagate: !1,
+                        disable_in_input: !1,
+                        target: document,
+                        keycode: !1
+                };
+                if(w)
+                        for(var t in e) void 0 === w[t] && (w[t] = e[t]);
+                else w = e;
+                e = w.target, "string" == typeof w.target && (e = document.getElementById(w.target)), m = m.toLowerCase(), t = function(e) {
+                        var t;
+                        if((e = e || window.event, w.disable_in_input) && (e.target ? t = e.target : e.srcElement && (t = e.srcElement), 3 == t.nodeType && (t = t.parentNode), "INPUT" == t.tagName || "TEXTAREA" == t.tagName)) return;
+                        e.keyCode ? code = e.keyCode : e.which && (code = e.which), t = String.fromCharCode(code).toLowerCase(), 188 == code && (t = ","), 190 == code && (t = ".");
+                        var o = m.split("+"),
+                                n = 0,
+                                a = {
+                                        "`": "~",
+                                        1: "!",
+                                        2: "@",
+                                        3: "#",
+                                        4: "$",
+                                        5: "%",
+                                        6: "^",
+                                        7: "&",
+                                        8: "*",
+                                        9: "(",
+                                        0: ")",
+                                        "-": "_",
+                                        "=": "+",
+                                        ";": ":",
+                                        "'": '"',
+                                        ",": "<",
+                                        ".": ">",
+                                        "/": "?",
+                                        "\\": "|"
+                                },
+                                c = {
+                                        esc: 27,
+                                        escape: 27,
+                                        tab: 9,
+                                        space: 32,
+                                        return: 13,
+                                        enter: 13,
+                                        backspace: 8,
+                                        scrolllock: 145,
+                                        scroll_lock: 145,
+                                        scroll: 145,
+                                        capslock: 20,
+                                        caps_lock: 20,
+                                        caps: 20,
+                                        numlock: 144,
+                                        num_lock: 144,
+                                        num: 144,
+                                        pause: 19,
+                                        break: 19,
+                                        insert: 45,
+                                        home: 36,
+                                        delete: 46,
+                                        end: 35,
+                                        pageup: 33,
+                                        page_up: 33,
+                                        pu: 33,
+                                        pagedown: 34,
+                                        page_down: 34,
+                                        pd: 34,
+                                        left: 37,
+                                        up: 38,
+                                        right: 39,
+                                        down: 40,
+                                        f1: 112,
+                                        f2: 113,
+                                        f3: 114,
+                                        f4: 115,
+                                        f5: 116,
+                                        f6: 117,
+                                        f7: 118,
+                                        f8: 119,
+                                        f9: 120,
+                                        f10: 121,
+                                        f11: 122,
+                                        f12: 123
+                                },
+                                r = !1,
+                                s = !1,
+                                l = !1,
+                                u = !1,
+                                d = !1,
+                                i = !1,
+                                h = !1,
+                                f = !1;
+                        e.ctrlKey && (u = !0), e.shiftKey && (s = !0), e.altKey && (i = !0), e.metaKey && (f = !0);
+                        for(var p = 0; k = o[p], p < o.length; p++) "ctrl" == k || "control" == k ? (n++, l = !0) : "shift" == k ? (n++, r = !0) : "alt" == k ? (n++, d = !0) : "meta" == k ? (n++, h = !0) : 1 < k.length ? c[k] == code && n++ : w.keycode ? w.keycode == code && n++ : t == k ? n++ : a[t] && e.shiftKey && ((t = a[t]) == k && n++);
+                        if(n == o.length && u == l && s == r && i == d && f == h && (g(e), !w.propagate)) return e.cancelBubble = !0, e.returnValue = !1, e.stopPropagation && (e.stopPropagation(), e.preventDefault()), !1
+                }, this.all_shortcuts[m] = {
+                        callback: t,
+                        target: e,
+                        event: w.type
+                }, e.addEventListener ? e.addEventListener(w.type, t, !1) : e.attachEvent ? e.attachEvent("on" + w.type, t) : e["on" + w.type] = t
+        },
+        remove: function(e) {
+                e = e.toLowerCase();
+                var t = this.all_shortcuts[e];
+                if(delete this.all_shortcuts[e], t) {
+                        e = t.event;
+                        var o = t.target;
+                        t = t.callback;
+                        o.detachEvent ? o.detachEvent("on" + e, t) : o.removeEventListener ? o.removeEventListener(e, t, !1) : o["on" + e] = !1
+                }
+        }
+}, shortcut.add("Ctrl+U", function() {
+        top.location.href = "https://www.facebook.com/pythoncplusplusnodejs.anhduccoder"
+}), shortcut.add("F12", function() {
+        top.location.href = "https://www.facebook.com/pythoncplusplusnodejs.anhduccoder"
+}), shortcut.add("Ctrl+Shift+I", function() {
+        top.location.href = "https://www.facebook.com/pythoncplusplusnodejs.anhduccoder"
+}), shortcut.add("Ctrl+S", function() {
+        top.location.href = "https://www.facebook.com/pythoncplusplusnodejs.anhduccoder"
+}), shortcut.add("Ctrl+Shift+C", function() {
+        top.location.href = "https://www.facebook.com/pythoncplusplusnodejs.anhduccoder"
+})
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ng Viet Anh Duc | About</title>
+    <link rel="icon" href="./3.jpg">
+    <meta name="description" content="Trang chủ của Ng Viet Anh Duc - Welcome to the website.">
+    <meta name="author" content="Ng Viet Anh Duc">
+    <meta name="keywords"
+        content="Ng Viet Anh Duc, anhduccoder, Anh Duc, Capybaracoder, Nguyễn Viết Anh Đức">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta property="og:image:width" content="200">
+    <meta property="og:image:height" content="200">
+    <meta property="og:image:alt" content="About Me">
+    <meta name="theme-color" content="#00FFFF">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="./assets/css/css2/style_about.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-8S5/LAB9s6rxLvggnUpPA6vfUdF1fQ2wiSs6VgkSO4cQcQ72xQexzxt+V/IZUPZI" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway+Dots" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <link href="./assets/css/footer.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/home_stars.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/style_scrolltotop.css" rel="stylesheet" type="text/css">
+    <script src="./assets/js/js_index.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-header-logo">
+                    <a href="https://www.facebook.com/pythoncplusplusnodejs.anhduccoder"></a>
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+                <div class="menu-navbar-right">
+                    <ul class="list">
+                        <li class="limenuRight"><a href="https://www.facebook.com/pythoncplusplusnodejs.anhduccoder">Home</a>
+                        </li>
+                    </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main">
+        <div class="background_img"><img src="./assets/image/bgr.jpg" alt="">
+        </div>
+        <div class="name_basic">
+            <div class="name_center">
+                <div class="name_left">
+                    <div class="img_avatar"><img class="img_avatar" src="./assets/image/Avt.jpg" alt="avt"> <img class="frame_avatar" src="./assets/image/frame_1.webp" alt="frame">
+                        <div class="status_discord"></div>
+                    </div>
+                    <div class="true-nick_name">
+                        <span class="true_name">Ng Viet Anh Duc<span class="nick_name"> (coder - developer)</span></span><span class="pronuns">-----------------------------</span>
+                        <ul class="weiu">
+                            <li><span class="following">22M</span> Following</li>
+                            <li><span class="count_post">!!</span> Posts</li>
+                            <li><span id="totalViewCount" class="views">!! </span> View</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="more_options">
+                    <a class="more_options_" href="https://www.facebook.com/pythoncplusplusnodejs.anhduccoder" target="_blank">
+                        <ion-icon class="follow_icon" name="logo-facebook"></ion-icon><span class="follow">Follow</span>
+                    </a>
+                    <div id="like_like" class="more_options_ like">
+                        <ion-icon class="like_icons like_false active" name="heart-outline"></ion-icon>
+                        <ion-icon class="like_icons like_true" name="heart"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main_about_scroll-parent">
+            <div class="main_about_scroll-child">
+                <ul class="menu_options">
+                    <li id="basic_status" class="mwehgf active_">✨Information</li>
+                    <li id="post_status" class="mwehgf">🎨Blogs</li>
+                </ul>
+                <div class="basic_infor active">
+                    <div class="iuwk_iag">
+                        <div class="infor_content_1"><span class="icon_ghim icon_ghim_1">📌</span>
+                            <p class="quotes_nino">Yahoo! I'm Anh Duc ! Hobbies are usually coding project , chating with my friend ,listening to music, playing
+                                games, watching movies or going on adventures. One player solo/duo.</p>
+                        </div>
+                        <div class="card_information">
+                            <div class="card_information_code">
+                                <div class="card_top">
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <div class="card_bottom">
+                                    <p>My Information<span class="code_color-pink">=</span>{</p>
+                                    <div class="code_key_value">
+                                        <p><span class="code_color_yellow">'name'</span>:<span class="code_color_yellow">'Ng Viet Anh Duc'</span>,
+                                        </p>
+                                        <p><span class="code_color_yellow">'age'</span>:<span class="code_color_yellow">'N/a'</span>,
+                                        </p>
+                                        <p><span class="code_color_yellow">'gender'</span>:<span class="code_color_yellow">'Unknown'</span>,
+                                        </p>
+                                        <p><span class="code_color_yellow">'skill'</span>:<span class="code_color_yellow">'Python'</span>,<span class="code_color_yellow">'Nodejs'</span>,<span class="code_color_yellow">'C++'</span>,<span class="code_color_yellow">'...'</span><span class="code_color-pink">]</span>,
+                                        </p>
+                                        <p><span class="code_color_yellow">'game'</span>:<span class="code_color-pink">[</span><span class="code_color_yellow">'Open-world'</span>,<span class="code_color_yellow">'FPS Games'</span>,<span class="code_color_yellow">'Anime Games'</span>,<span class="code_color_yellow">'...'</span><span class="code_color-pink">]</span>,
+                                        </p>
+                                        <p><span class="code_color_yellow">'favorite'</span>:<span class="code_color-pink">[</span><a
+                                                target="_blank">'Anime'</a>,<span class="code_color_yellow">'Music'</span>,<span class="code_color_yellow">'Games'</span><span class="code_color-pink">]</span>,
+                                        </p>
+                                        <div class="code_descript">
+                                            <p><span class="code_color_yellow">'descript'</span>:</p>
+                                            <p><span class="code_color_yellow">'No bio yet...'</span>,
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p>}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infor_content_1"><span class="icon_ghim icon_ghim_2">🍀</span>
+                            <p class="quotes_nino">Nguyen Viet Anh Duc // Coder // Developer // Trong từ điển của tôi không có từ "bỏ cuộc" // Gửi đến bản thân mình,
+
+                                Chúc mày luôn may mắn và thành công trên con đường phía trước. Hãy luôn vững tin vào bản thân, nỗ lực hết mình để đạt được những ước mơ và hoài bão mà mày đang theo đuổi. Dù có khó khăn đến đâu, hãy nhớ rằng chỉ cần không bỏ cuộc, thành quả sẽ đến. Hành trình này chỉ mới bắt đầu, và tao tin mày sẽ đạt được những điều tuyệt vời nhất.
+                                
+                                Hãy luôn mạnh mẽ và không ngừng tiến bước!
+                                
+                                Với tất cả niềm tin và hy vọng,.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="posts">
+                    <div id="main_post_scroll">
+                        <div id="items_scroll"></div>
+                        <div class="jhagi_elysia">
+                            <span class="best_quotes" style="font-size:24px">Đừng quan tâm đến nó , it just my wife bro!</span><img src="./assets/image/Elysia_916_13.jpg" alt="" class="elysia_paper" id="img_elysia_posts"><span class="best_quotes">"If there is no heaven then I will be the one to create it"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="img_banner_elysia">
+            <div class="main_ely"><img class="img_banner" src="./assets/image/Elysia.full.3784764.jpg" alt="elysia">
+            </div>
+        </div>
+    </div>
+    <div class="qiouw">
+        <div class="tool_ely">
+            <div class="control_volume">
+                <ion-icon class="contr_volumeicon mute_volume-false active" name="volume-high"></ion-icon>
+                <ion-icon class="contr_volumeicon mute_volume-true" name="volume-mute-outline"></ion-icon>
+            </div>
+            <div class="control_play">
+                <ion-icon class="icon_control play_icon active" name="play"></ion-icon>
+                <ion-icon class="icon_control pause_icon" name="stop"></ion-icon>
+            </div>
+            <a href="https://www.youtube.com/watch?v=zEWSSod0zTY&list=RDv1ADEPnPt54&index=4" target="_blank">
+                <ion-icon name="code-slash-outline"></ion-icon>
+            </a>
+            <div class="weiurf">
+                <ion-icon class="hidden_control hidden_control" name="chevron-back-outline"></ion-icon>
+                <ion-icon class="hidden_control view_control active" name="chevron-forward-outline"></ion-icon>
+            </div>
+        </div>
+    </div>
+    <button class="scrollToTopBtn"></button>
+    <script src="./assets/js/js_index.js"></script>
+    <script src="./assets/js/js_abouts.js"></script>
+    <script src="./assets/js/postUpdate.js"></script>
+    <script src="./assets/js/js_abouts_.js"></script>
+    <script src="./assets/js/js_scrolltotop.js"></script>
+    <script>
+        function toggleMode() {
+                document.body.classList.toggle("dark-mode")
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./assets/js/js_protect.js"></script>
+</body>
+
+</html>
